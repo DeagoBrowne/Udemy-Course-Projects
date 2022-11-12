@@ -22,7 +22,7 @@ const showSuccess = (input) => {
 // Check if email is valid
 const validateEmail = (email) => {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email).toLowerCase();
+  return re.test(email);
 };
 
 //Event listeners
