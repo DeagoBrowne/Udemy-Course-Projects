@@ -48,6 +48,8 @@ form.addEventListener('submit', (event) => {
   }
   if (password2.value === '') {
     showError(password2, 'Please confirm password');
+  } else if (password2 !== password) {
+    showError(password2, 'Passwords do not match');
   } else {
     showSuccess(password2);
   }
