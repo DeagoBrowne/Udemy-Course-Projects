@@ -21,8 +21,8 @@ const showSuccess = (input) => {
 
 // Check if email is valid
 const validateEmail = (email) => {
-  var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email).toLowerCase();
 };
 
 //Event listeners
