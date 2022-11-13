@@ -25,32 +25,50 @@ const validateEmail = (email) => {
   return re.test(email);
 };
 
+// Check required fields
+const checkRequired = (inputArray) => {
+  inputArray.forEach((input) => {
+    if (input.value.trim() === '') {
+      showError(input, `${getFieldName(input)} is required`);
+    } else {
+      showSuccess(input);
+    }
+  });
+}
+
+// Get fieldname
+const getFieldName = (input) => {
+  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
 //Event listeners
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  if (username.value === '') {
-    showError(username, 'Username is required');
-  } else {
-    showSuccess(username);
-  }
-  if (email.value === '') {
-    showError(email, 'Email is required');
-  } else if (!validateEmail(email.value)) {
-    showError(email, 'Email is not valid');
-  } else {
-    showSuccess(email);
-  }
-  if (password.value === '') {
-    showError(password, 'Password is required');
-  } else {
-    showSuccess(password);
-  }
-  if (password2.value === '') {
-    showError(password2, 'Please confirm password');
-  } else if (password2.value !== password.value) {
-    showError(password2, 'Passwords do not match');
-  } else {
-    showSuccess(password2);
-  }
+  checkRequired([username, email, password, password2]);
 })
+
+  //   if (username.value === '') {
+  //     showError(username, 'Username is required');
+  //   } else {
+  //     showSuccess(username);
+  //   }
+  //   if (email.value === '') {
+  //     showError(email, 'Email is required');
+  //   } else if (!validateEmail(email.value)) {
+  //     showError(email, 'Email is not valid');
+  //   } else {
+  //     showSuccess(email);
+  //   }
+  //   if (password.value === '') {
+  //     showError(password, 'Password is required');
+  //   } else {
+  //     showSuccess(password);
+  //   }
+  //   if (password2.value === '') {
+  //     showError(password2, 'Please confirm password');
+  //   } else if (password2.value !== password.value) {
+  //     showError(password2, 'Passwords do not match');
+  //   } else {
+  //     showSuccess(password2);
+  //   }
